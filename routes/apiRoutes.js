@@ -1,3 +1,6 @@
+var db = require("../models");
+
+module.exports = function(app) {
 // find all Books
 app.get("/api/books", function(req, res) {
   db.Books.findAll({}).then(function(dbBooks) {
@@ -57,3 +60,4 @@ app.post("/api/login", function(req, res) {
   // process order if buyer
   // update database??
 });
+}
