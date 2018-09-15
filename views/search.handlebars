@@ -2,15 +2,15 @@
     <!-- will have the displayed textbooks in respect to search input -->
     <!-- Info included: Image, Title, Author, Price, Condition, City -->
     
+    {{#each books}}
     {{!-- <img> --}}
     <div id = "text-info">
-        <p> Title: {{title}} </p>
-        <p> Author: {{author}} </p>
-        <p> Price: {{price}} </p>
-        <p> Condition: {{condition}} </p>
-        <p> City: {{location}} </p>
-        <p> Date Listed: {{date}} </p>
+        <p> Title: {{this.title}} </p>
+        <p> Author: {{this.authors}} </p>
+        <p> Price: {{this.price}} </p>
+        <p> Condition: {{this.condition}} </p>
     </div>
+    {{/each}}
 </div>
 
 <button id = "add-cart"> Add to Cart </button>
