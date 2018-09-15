@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="row">
+      <a href="/">← Back To Home</a>
+
+      <div class="col-8 offset-2">
+        <ul id="book-list" class="list-group">
+         
+          {{#each books}}
+          <li data-id="{{this.id}}" class="list-group-item">
+                 {{!-- <div id="displayContent">
+                   <div id="image"> --}}
+                     <a href="books/{{this.id}}"><img src="{{this.imageURL}}"></a>                    
+                     <button class="btn btn-success float-right delete"> order </button>
+                     <button class="btn btn-primary float-right delete"> view seller </button>
+                   {{!-- </div>                           --}}
+                   <h1>Title: {{this.title}}</h1>
+                   <p>Description: {{this.description}}</p>
+                   <div>Author: {{this.authors}}</div>
+                   <div>Price: ${{this.price}}</div>
+
+                   
+
+
+
+
+                {{!-- </div> --}}
+          </li>
+          {{/each}}
+
+        </ul>
+      </div>
+    </div>
+    
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
