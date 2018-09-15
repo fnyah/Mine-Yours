@@ -29,6 +29,20 @@ app.get("/api/sellers/:id", function(req, res) {
   });
 });
 
+// find all Sellers
+app.get("/api/sellers", function(req, res) {
+  db.Sellers.findAll({}).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
+});
+
+// find all sellers by id
+app.get("/api/sellers/:id", function(req, res) {
+  db.Sellers.findOne({ where: { id: req.params.id } }).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
+});
+
 //Delete Books by id
 app.delete("/api/books/delete/:id", function(req, res) {
   db.Books.destroy({ where: { id: req.params.id } }).then(function(dbBooks) {
@@ -60,11 +74,5 @@ app.post("/api/login", function(req, res) {
   // process order if buyer
   // update database??
 });
-
-
-
-
-
-
 
 }

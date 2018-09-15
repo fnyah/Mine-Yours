@@ -2,19 +2,19 @@ var db = require("../models");
 
 module.exports = function(app) {
 // to home page 
-// app.get("/", function(req,res){
-//   res.render("home",{msg:""})  
-// });
+app.get("/", function(req,res){
+  res.render("home",{msg:""})  
+});
 
 // to buyer landing page 
 app.get("/buyer", function(req,res){ 
-  res.render("buy",{msg:""})
+  res.render("buyer",{msg:""})
 });
 
 // get buyer searchQuery result
 app.get("/buyer/:title", function(req, res) {
   db.Books.findOne({where:{title:req.params.title}}).then(function(dbBooks) {
-    res.render("book", {
+    res.render("buyer", {
     books:dbBooks
     });
   });
@@ -30,20 +30,20 @@ app.get("/books", function(req, res) {
   });
 });
 
-// show books by id, ISBN, title....... check with team
-app.get("/books/:id", function(req, res) {
-  db.Books.findOne({where:{id:req.params.id}}).then(function(dbBooks) {
-    res.render("book", {
-      msg: "",
-      books: dbBooks
-    });
-  });
-});
+// // show books by id, ISBN, title....... check with team
+// app.get("/books/:id", function(req, res) {
+//   db.Books.findOne({where:{id:req.params.id}}).then(function(dbBooks) {
+//     res.render("book", {
+//       msg: "",
+//       books: dbBooks
+//     });
+//   });
+// });
 
-//to seller landing page 
-app.get("/seller",function(req,res){ 
-  res.render("sale",{msg:""})
-});
+// //to seller landing page 
+// app.get("/seller",function(req,res){ 
+//   res.render("sale",{msg:""})
+// });
 
 //to login page for both seller/ buyer ???? check with team...
 app.get("/login",function(req,res){ 
@@ -56,3 +56,22 @@ app.get("/login",function(req,res){
   });
 //========================
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

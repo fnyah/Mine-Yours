@@ -34,9 +34,18 @@
     "type": "git",
     "url": "git+https://github.com/fnyah/GroupProject2.git"
   },
-  "author": "",
+  "author": "Chriscelle",
   "bugs": {
     "url": "https://github.com/fnyah/GroupProject2/issues"
   },
-  "homepage": "https://github.com/fnyah/GroupProject2#readme"
+  "homepage": "https://github.com/fnyah/GroupProject2#readme",
+  "keywords": [
+    "Express",
+    "Node",
+    "SQL",
+    "create",
+    "read",
+    "update",
+    "delete"
+  ]
 }
