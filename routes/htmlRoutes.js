@@ -2,9 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
 // to home page 
-app.get("/", function(req,res){
-  res.render("home",{msg:""})  
-});
+// app.get("/", function(req,res){
+//   res.render("home",{msg:""})  
+// });
 
 // to buyer landing page 
 app.get("/buyer", function(req,res){ 
@@ -54,4 +54,5 @@ app.get("/login",function(req,res){
   app.get("*", function(req, res) {
     res.render("404");
   });
+//========================
 };
