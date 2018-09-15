@@ -1,14 +1,19 @@
 var db = require("../models");
 
 module.exports = function(app) {
-// to home page 
+// to landing page 
 app.get("/", function(req,res){
   res.render("home",{msg:""})  
 });
 
-// to buyer landing page 
+// to buyer page 
 app.get("/buyer", function(req,res){ 
   res.render("buyer",{msg:""})
+});
+
+// to shopping page 
+app.get("/shopping", function(req,res){ 
+  res.render("shopping",{msg:"Welcome to shopping cart"})
 });
 
 // get buyer searchQuery result
