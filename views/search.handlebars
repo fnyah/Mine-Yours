@@ -1,0 +1,16 @@
+<div id = "search-page">
+    <!-- will have the displayed textbooks in respect to search input -->
+    <!-- Info included: Image, Title, Author, Price, Condition, City -->
+    
+    {{#each books}}
+    {{!-- <img> --}}
+    <div id = "text-info">
+        <p> Title: {{this.title}} </p>
+        <p> Author: {{this.authors}} </p>
+        <p> Price: {{this.price}} </p>
+        <p> Condition: {{this.condition}} </p>
+    </div>
+    {{/each}}
+</div>
+
+<button id = "add-cart"> Add to Cart </button>
