@@ -6,23 +6,23 @@ app.get("/", function(req,res){
   res.render("home",{msg:""})  
 });
 
-// to buyer page 
+// to buyer form page with search input 
 app.get("/buyer", function(req,res){ 
   res.render("buyer",{msg:""})
-});
-
-// to shopping page 
-app.get("/shopping", function(req,res){ 
-  res.render("shopping",{msg:"Welcome to shopping cart"})
 });
 
 // get buyer searchQuery result
 app.get("/buyer/:title", function(req, res) {
   db.Books.findOne({where:{title:req.params.title}}).then(function(dbBooks) {
-    res.render("buyer", {
+    res.render("search", {
     books:dbBooks
     });
   });
+});
+
+// to display query result
+app.get("/cart", function(req,res){ 
+  res.render("cart",{msg:"Welcome to shopping cart"})
 });
 
 // show all available books
@@ -59,7 +59,6 @@ app.get("/login",function(req,res){
   app.get("*", function(req, res) {
     res.render("404");
   });
-//========================
 };
 
 
