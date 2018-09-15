@@ -2,7 +2,7 @@
     {{!-- goes to login.handlebars --}}
     <a href = "/login"> Sign Up / Log In  </a> | 
     {{!-- goes to shopping.handlebars --}}
-    <a href = "/shopping"> Shopping Cart </a>
+    <a href = "/cart"> Shopping Cart </a>
 </div>
 
 <h1 id = "title"> The Marketplace </h1>
@@ -11,20 +11,3 @@
     <input id = "search-input">
     <button id = "search-btn"> Search </button>
 </div>
-
-<div id = "buyers-page">
-    <!-- will have the displayed textbooks in respect to search input -->
-    <!-- Info included: Image, Title, Author, Price, Condition, City -->
-    
-    {{!-- <img> --}}
-    <div id = "text-info">
-        <p> Title: {{title}} </p>
-        <p> Author: {{author}} </p>
-        <p> Price: {{price}} </p>
-        <p> Condition: {{condition}} </p>
-        <p> City: {{location}} </p>
-        <p> Date Listed: {{date}} </p>
-    </div>
-</div>
-
-<button id = "add-cart"> Add to Cart </button>
