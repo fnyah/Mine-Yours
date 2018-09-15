@@ -1,27 +1,77 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
+// to home page 
+app.get("/", function(req,res){
+  res.render("home",{msg:""})  
+});
+
+// to buyer landing page 
+app.get("/buyer", function(req,res){ 
+  res.render("buyer",{msg:""})
+});
+
+// get buyer searchQuery result
+app.get("/buyer/:title", function(req, res) {
+  db.Books.findOne({where:{title:req.params.title}}).then(function(dbBooks) {
+    res.render("buyer", {
+    books:dbBooks
     });
   });
+});
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
+// show all available books
+app.get("/books", function(req, res) {
+  db.Books.findAll({}).then(function(dbBooks) {
+    res.render("book", {
+      msg: "",
+      books: dbBooks
     });
   });
+});
 
-  // Render 404 page for any unmatched routes
+// // show books by id, ISBN, title....... check with team
+// app.get("/books/:id", function(req, res) {
+//   db.Books.findOne({where:{id:req.params.id}}).then(function(dbBooks) {
+//     res.render("book", {
+//       msg: "",
+//       books: dbBooks
+//     });
+//   });
+// });
+
+// //to seller landing page 
+// app.get("/seller",function(req,res){ 
+//   res.render("sale",{msg:""})
+// });
+
+//to login page for both seller/ buyer ???? check with team...
+app.get("/login",function(req,res){ 
+ res.render("login",{msg:""})
+});
+
+// Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
+//========================
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
