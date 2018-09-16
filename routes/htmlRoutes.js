@@ -45,10 +45,10 @@ app.get("/books", function(req, res) {
 //   });
 // });
 
-// //to seller landing page 
-// app.get("/seller",function(req,res){ 
-//   res.render("sale",{msg:""})
-// });
+//to seller landing page 
+app.get("/seller",function(req,res){ 
+  res.render("seller",{msg:""})
+});
 
 //to login page for both seller/ buyer ???? check with team...
 app.get("/login",function(req,res){ 
