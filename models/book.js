@@ -27,11 +27,13 @@ module.exports = function(sequelize, DataTypes) {
       },
       condition:{
         type: DataTypes.STRING,
-        allowNull:true
+        allowNull:true,
+        defaultValue:"as-new"
+
 
       }
-      
-      
+    
+    
     });
   
     Books.associate = function(models) {

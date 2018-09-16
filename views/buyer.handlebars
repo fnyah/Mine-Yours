@@ -46,3 +46,56 @@ body {
     <input id = "search-input">
     <button id = "search-btn"> <a href = "/search"> Search </a> </button>
 </div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$("#search-btn").on("click",function(event){
+    event.preventDefault();
+    alert("search button clicked");
+
+// search for book info from google-books API 
+  var searchPhrase = $("#search-input").val().trim(); //gets searchphrase from textbox
+    alert(searchPhrase);
+  
+  var queryURL = "https://www.googleapis.com/books/v1/volumes/?q=" + searchPhrase;
+
+    $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+  console.log(response);
+    //for(var i=1; i <response.items.length;i++){
+        var googleImage = (response.items[1].volumeInfo.imageLinks.thumbnail);
+        var googleTitle = (response.items[1].volumeInfo.title);
+        var googleDescription = (response.items[1].searchInfo.textSnippet);
+        var googleAuthors = (response.items[1].volumeInfo.authors[0]);
+
+
+                        var tempObj={
+                              title:googleTitle,
+                              description:googleDescription,
+                              imageURL:googleImage,
+                              authors:googleAuthors,
+                              price:25
+                            };
+    //}
+
+ // clear input-box for later use  
+   $("#search-input").val("");
+
+// post data to api/books & switch route to buyer/title
+   var currentURL = window.location.origin;
+   $.post(currentURL + "/api/books",tempObj, function (data) {
+       console.log(data);
+        window.location.href = '/buyer/'+data.title;
+    });
+  })  
+
+})
+
+</script>
+
+
