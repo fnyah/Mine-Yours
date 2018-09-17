@@ -1,13 +1,13 @@
 var db = require("../models");
 
 module.exports = function(app) {
-// to landing page 
+// to landing page
 app.get("/", function(req,res){
-  res.render("home",{msg:""})  
+  res.render("home",{msg:""})
 });
 
-// to buyer form page with search input 
-app.get("/buyer", function(req,res){ 
+// to buyer form page with search input
+app.get("/buyer", function(req,res){
   res.render("buyer",{msg:""})
 });
 
@@ -21,7 +21,7 @@ app.get("/buyer/:title", function(req, res) {
 });
 
 // to display query result
-app.get("/cart", function(req,res){ 
+app.get("/cart", function(req,res){
   res.render("cart",{msg:"Welcome to shopping cart"})
 });
 
@@ -45,14 +45,18 @@ app.get("/books", function(req, res) {
 //   });
 // });
 
-//to seller landing page 
-app.get("/seller",function(req,res){ 
+//to seller landing page
+app.get("/seller",function(req,res){
   res.render("seller",{msg:""})
 });
 
 //to login page for both seller/ buyer ???? check with team...
-app.get("/login",function(req,res){ 
+app.get("/login",function(req,res){
  res.render("login",{msg:""})
+});
+
+app.get("/register",function(req,res){
+ res.render("signUp",{msg:""})
 });
 
 // Render 404 page for any unmatched routes
@@ -60,22 +64,3 @@ app.get("/login",function(req,res){
     res.render("404");
   });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
