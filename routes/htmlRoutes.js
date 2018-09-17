@@ -1,6 +1,11 @@
 var db = require("../models");
+var express = require("express");
 
 module.exports = function(app) {
+
+// images
+// app.use(express.static("../public/images"));
+
 // to landing page 
 app.get("/", function(req,res){
   res.render("home",{msg:""})  

@@ -47,18 +47,16 @@ body {
     <button id = "search-btn"> <a href = "/search"> Search </a> </button>
 </div>
 
-
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
 $("#search-btn").on("click",function(event){
     event.preventDefault();
-    alert("search button clicked");
+    //alert("search button clicked");
 
 // search for book info from google-books API 
   var searchPhrase = $("#search-input").val().trim(); //gets searchphrase from textbox
-    alert(searchPhrase);
+    //alert(searchPhrase);
   
   var queryURL = "https://www.googleapis.com/books/v1/volumes/?q=" + searchPhrase;
 
@@ -89,7 +87,7 @@ $("#search-btn").on("click",function(event){
 // post data to api/books & switch route to buyer/title
    var currentURL = window.location.origin;
    $.post(currentURL + "/api/books",tempObj, function (data) {
-       console.log(data);
+        console.log(data);
         window.location.href = '/buyer/'+data.title;
     });
   })  
