@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var carts = sequelize.define("Carts", {
+    var Carts = sequelize.define("Carts", {
       title: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -35,15 +35,15 @@ module.exports = function(sequelize, DataTypes) {
     
     });
   
-    Books.associate = function(models) {
+    Carts.associate = function(models) {
       // We're saying that a book should belong to an Owner
       // A book can't be created without an Owner due to the foreign key constraint
-      Books.belongsTo(models.Sellers, {
+      Carts.belongsTo(models.Sellers, {
         foreignKey: {
           allowNull: true
         }
       });
     };
-    return Books;
+    return Carts;
   };
   
