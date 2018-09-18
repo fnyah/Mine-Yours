@@ -44,7 +44,7 @@ app.get("/api/sellers/:id", function(req, res) {
 });
 
 //Delete Books by id
-app.delete("/api/books/delete/:id", function(req, res) {
+app.delete("/api/books/:id", function(req, res) {
   db.Books.destroy({ where: { id: req.params.id } }).then(function(dbBooks) {
     res.json(dbBooks);
   });
@@ -54,6 +54,20 @@ app.delete("/api/books/delete/:id", function(req, res) {
 
 // add new book to database get input from seller form req.body
 app.post("/api/books", function(req, res) {
+  console.log(req.body);
+  db.Books.create({
+    title: req.body.title,
+    description: req.body.description,
+    imageURL: req.body.imageURL,
+    authors: req.body.authors,
+    price: req.body.price
+  }).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
+});
+
+// add new book to database get input from seller form req.body
+app.post("/api/books/:cart", function(req, res) {
   console.log(req.body);
   db.Books.create({
     title: req.body.title,

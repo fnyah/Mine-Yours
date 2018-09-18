@@ -55,11 +55,12 @@ body {
 $("#search-btn").on("click",function(event){
     event.preventDefault();
     alert("search button clicked");
+        // window.location.href = '/buyer/'+searchPhrase;
+
 
 // search for book info from google-books API 
   var searchPhrase = $("#search-input").val().trim(); //gets searchphrase from textbox
-    alert(searchPhrase);
-  
+
   var queryURL = "https://www.googleapis.com/books/v1/volumes/?q=" + searchPhrase;
 
     $.ajax({
