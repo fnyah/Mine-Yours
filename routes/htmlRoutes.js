@@ -1,5 +1,4 @@
 var db = require("../models");
-
 module.exports = function(app) {
 // to landing page
 app.get("/", function(req,res){
@@ -13,7 +12,12 @@ app.get("/buyer", function(req,res){
 
 // get buyer searchQuery result
 app.get("/buyer/:title", function(req, res) {
-  db.Books.findOne({where:{title:req.params.title}}).then(function(dbBooks) {
+  db.Books.findAll({where:{
+    title:{
+      $like:'%'+req.params.title+'%'
+    }
+  }
+  }).then(function(dbBooks) {
     res.render("search", {
     books:dbBooks
     });
@@ -35,17 +39,6 @@ app.get("/books", function(req, res) {
   });
 });
 
-// // show books by id, ISBN, title....... check with team
-// app.get("/books/:id", function(req, res) {
-//   db.Books.findOne({where:{id:req.params.id}}).then(function(dbBooks) {
-//     res.render("book", {
-//       msg: "",
-//       books: dbBooks
-//     });
-//   });
-// });
-
-//to seller landing page
 app.get("/seller",function(req,res){
   res.render("seller",{msg:""})
 });
