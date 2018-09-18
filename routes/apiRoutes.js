@@ -38,9 +38,16 @@ app.delete("/api/books/:id", function(req, res) {
 
 //=================post methods (api)======================
 
-// add new book to database get input from seller form req.body
+// add new seller to database, get input from seller form req.body
 app.post("/api/sellers", function(req, res) {
   db.Sellers.create(req.body).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
+});
+
+// add new book to database get input from api in the buyer.handlebars page
+app.post("/api/books", function(req, res) {
+  db.Books.create(req.body).then(function(dbBooks) {
     res.json(dbBooks);
   });
 });
