@@ -20,9 +20,6 @@
     "path": "^0.12.7",
     "sequelize": "^4.38.0"
   },
-  "scripts": {
-      "start": "node server.js"
-  },
    "engines": {
     "node": "8.11.1"
   },
