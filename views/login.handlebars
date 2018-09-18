@@ -1,2 +1,44 @@
+<script>
+
+body {
+    padding: 50px 100px;
+}
+
+#title {
+    font-family: 'Josefin Sans', sans-serif, Arial;
+    margin-bottom: 50px;
+    font-size: 300%;
+    text-align: center;
+    background-color: #222E50;
+    padding: 15px;
+    width: 50vw;
+    color: white;
+    border-radius: 20px;
+}
+
+</script>
 
 <button> <a href = "/seller"> Submit </a> </button>
+
+<h1 id="loginH1">{{msg}} login page </h1>
+
+ <a href="/" style="margin-left:33.3%">← Back To Home</a>
+
+ <div id="master-login-example">
+  <div id="login_div" class="main-div">
+    <h3>User account example Firebase</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+    <button onclick="login()" >Login to Account</button>
+  </div>
+  <div id="create_div" class="create-account">
+    <button onclick="window.location.href='/register'">Create Account</button>
+  </div>
+  <div id="user_div" class="loggedin-div">
+    <h3>Welcome User</h3>
+    <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+<script src="/js/login.js"></script>

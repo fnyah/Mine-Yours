@@ -1,3 +1,5 @@
+<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
 <style>
 /* Applicable to all pages */
 
@@ -60,7 +62,7 @@ $("#search-btn").on("click",function(event){
 
 // search for book info from google-books API 
   var searchPhrase = $("#search-input").val().trim(); //gets searchphrase from textbox
-
+    alert(searchPhrase);
   var queryURL = "https://www.googleapis.com/books/v1/volumes/?q=" + searchPhrase;
 
     $.ajax({
@@ -68,11 +70,11 @@ $("#search-btn").on("click",function(event){
     method: "GET"
   }).then(function(response) {
   console.log(response);
-    //for(var i=1; i <response.items.length;i++){
+   
         var googleImage = (response.items[1].volumeInfo.imageLinks.thumbnail);
         var googleTitle = (response.items[1].volumeInfo.title);
         var googleDescription = (response.items[1].searchInfo.textSnippet);
-        var googleAuthors = (response.items[1].volumeInfo.authors[0]);
+        var googleAuthors = (response.items[1].volumeInfo.authors["0"]);
 
 
                         var tempObj={
@@ -82,7 +84,7 @@ $("#search-btn").on("click",function(event){
                               authors:googleAuthors,
                               price:25
                             };
-    //}
+   
 
  // clear input-box for later use  
    $("#search-input").val("");
@@ -98,5 +100,7 @@ $("#search-btn").on("click",function(event){
 })
 
 </script>
+
+
 
 

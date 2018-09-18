@@ -1,3 +1,5 @@
+<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
 <style>
 /* Applicable to all pages */
 
@@ -16,9 +18,22 @@ body {
     color: white;
     border-radius: 20px;
 }
+
+#header {
+    float: right;
+}
 </style>
 
-{{!-- <div id = "search-page"> --}}
+<div id = "header">
+    {{!-- goes to login.handlebars --}}
+    <a href = "/login"> Sign Up / Log In  </a> | 
+    {{!-- goes to shopping.handlebars --}}
+    <a href = "/cart"> Shopping Cart </a>
+</div>
+
+<h1 id = "title"> The Marketplace </h1>
+
+<div id = "search-page">
     <!-- will have the displayed textbooks in respect to search input -->
     <!-- Info included: Image, Title, Author, Price, Condition, City -->
     
@@ -81,4 +96,5 @@ var handleCartBtnClick = function() {
 
 $("#text-info").on("click", ".addToCart", handleCartBtnClick);
 
-</script>
+<button id = "add-cart"> Add to Cart </button>
+<button> <a href = "/buyer"> Keep Shopping </a></button>
