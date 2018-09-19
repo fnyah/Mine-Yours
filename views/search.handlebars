@@ -33,24 +33,26 @@ body {
 
 <h1 id = "title"> The Marketplace </h1>
 
-<div id = "search-page">
+{{!-- <div id = "search-page"> --}}
     <!-- will have the displayed textbooks in respect to search input -->
     <!-- Info included: Image, Title, Author, Price, Condition, City -->
     
     {{!-- <img> --}}
     <ul id = "text-info" style="list-style:none">
     {{#each books}}
-        <li data-id="{{this.id}}">
+        <li data-id="{{this.id}}" data-title="{{this.title}}" data-price="{{this.price}}">
             <img src="{{this.imageURL}}"> 
             <p> Title: {{this.title}} </p>
             <p> Author: {{this.authors}} </p>
             <p> Price: {{this.price}} </p>
             <p> Condition: {{this.condition}} </p>
-            <button id = "add-cart" class="btn addToCart"> Add to Cart </button>
+            <button class="btn addToCart"> Add to Cart </button>
         </li>
     {{/each}}
     </ul>
 {{!-- </div> --}}
+{{!-- <button id = "add-cart"> Add to Cart </button> --}}
+<button> <a href = "/buyer"> Keep Shopping </a></button>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -70,31 +72,50 @@ var API={
   },
   addToCart: function(){
    return $.ajax({
-       url:"api/books/cart",
+       url:"/api/carts",
        type:"POST"
    })
   }
 };
-//====================  
-
 // Remove the books from the db and move list to cart table
 var handleCartBtnClick = function() {
-    alert("add to cart btn clicked")
-    // get the id of clikced item
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-    alert("this is the book-id to be deleted:  "+ idToDelete)
-    // remove from list
-  API.addToCart(idToDelete).then(function() {
-       window.location.href = '/api/books/cart'+idToDelete;
-        //alert(window.location.href)
+        event.preventDefault();
+    alert("add to cart btn clicked");
+    var idToMoveToCart = $(this).parent().attr("data-id");
+    var titleToMoveToCart = $(this).parent().attr("data-title");
+    var priceToMoveToCart = $(this).parent().attr("data-price");
 
-  });
+        alert(priceToMoveToCart)
+
+    // get the id of clikced item and remove from search list
+    var tempObj={
+        title:titleToMoveToCart,
+        price:priceToMoveToCart
+    }
+
+//console.log(tempObj);
+
+ //alert(tempObj.title);
+    //alert("this is the book to move to cart:  "+idToMoveToCart)
+    // remove from list
+       var currentURL = window.location.origin;
+
+        $.post(currentURL+"/api/carts",tempObj, function (data) {
+       // go to /api/sellers to see seller info added   
+     //window.location.href = '/api/carts';
+       console.log("seller added to the db")
+   //============
+   //API.deleteBook(idToMoveToCart);
+  //location.reload();
+   //============    
+    });
+
+  
 
 };
 
-$("#text-info").on("click", ".addToCart", handleCartBtnClick);
 
-<button id = "add-cart"> Add to Cart </button>
-<button> <a href = "/buyer"> Keep Shopping </a></button>
+$("#text-info").on("click",".addToCart",handleCartBtnClick);
+
+
+</script>

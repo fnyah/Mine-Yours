@@ -29,9 +29,9 @@ app.get("/api/sellers/:id", function(req, res) {
   });
 });
 
-//Delete Books by id
-app.delete("/api/books/:id", function(req, res) {
-  db.Books.destroy({ where: { id: req.params.id } }).then(function(dbBooks) {
+// find all items from cart
+app.get("/api/carts", function(req, res) {
+  db.Carts.findAll({}).then(function(dbBooks) {
     res.json(dbBooks);
   });
 });
@@ -52,6 +52,13 @@ app.post("/api/books", function(req, res) {
   });
 });
 
+// add to cart from search.handlebars req.body
+app.post("/api/carts", function(req, res) {
+  db.Carts.create(req.body).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
+});
+
 
 // login?????? check with team
 app.post("/api/login", function(req, res) {
@@ -60,6 +67,14 @@ app.post("/api/login", function(req, res) {
   // take to seller page if seller
   // process order if buyer
   // update database??
+});
+
+//=================delete methods (api)======================
+//Delete Books by id
+app.delete("/api/books/:id", function(req, res) {
+  db.Books.destroy({ where: { id: req.params.id } }).then(function(dbBooks) {
+    res.json(dbBooks);
+  });
 });
 
 }

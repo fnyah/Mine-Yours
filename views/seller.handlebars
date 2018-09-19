@@ -97,6 +97,7 @@ $("#seller-submit").on("click",function(event){
       $.post("/api/sellers",sellerInfo, function (data) {
        // go to /api/sellers to see seller info added   
        //window.location.href = '/api/sellers';
+       console.log("seller added to the db")
        
     });
  // show seller name in the modal title;
