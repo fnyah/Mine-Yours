@@ -1,0 +1,8 @@
+{
+  "name": "Book marketplace",
+  "description": "Used book marketplace to avoid confusing second hand market.",
+  "repository": "https://github.com/fnyah/GroupProject2.git",
+  "logo": "",
+  "keywords": ["node","express"],
+  "image": "heroku/nodejs"
+}
