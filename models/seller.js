@@ -1,7 +1,37 @@
 module.exports = function(sequelize, DataTypes) {
     var Sellers = sequelize.define("Sellers", {
       // Giving the Book model a name of type STRING
-       name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: true
+
+      },
+      title:{
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+  
+      authors: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      price:{
+        type: DataTypes.DECIMAL,
+        allowNull:true
+
+      },
+      condition:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        defaultValue:"Excellent"
+      },
+
+      location:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        defaultValue:"Toronto"
+      }
+
    
   
     });

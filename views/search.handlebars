@@ -37,17 +37,64 @@ body {
     <!-- will have the displayed textbooks in respect to search input -->
     <!-- Info included: Image, Title, Author, Price, Condition, City -->
     
-    {{#each books}}
     {{!-- <img> --}}
-    <div id = "text-info">
-        <img src="{{this.imageURL}}"> 
-        <p> Title: {{this.title}} </p>
-        <p> Author: {{this.authors}} </p>
-        <p> Price: {{this.price}} </p>
-        <p> Condition: {{this.condition}} </p>
-    </div>
+    <ul id = "text-info" style="list-style:none">
+    {{#each books}}
+        <li data-id="{{this.id}}">
+            <img src="{{this.imageURL}}"> 
+            <p> Title: {{this.title}} </p>
+            <p> Author: {{this.authors}} </p>
+            <p> Price: {{this.price}} </p>
+            <p> Condition: {{this.condition}} </p>
+            <button id = "add-cart" class="btn addToCart"> Add to Cart </button>
+        </li>
     {{/each}}
-</div>
+    </ul>
+{{!-- </div> --}}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+//=================
+var API={
+    deleteBook: function(id) {
+    return $.ajax({
+      url:"/api/books/"+id,
+      type: "DELETE"
+    });
+  },
+    getBooks: function() {
+    return $.ajax({
+      url: "/api/books",
+      type: "GET"
+    });
+  },
+  addToCart: function(){
+   return $.ajax({
+       url:"api/books/cart",
+       type:"POST"
+   })
+  }
+};
+//====================  
+
+// Remove the books from the db and move list to cart table
+var handleCartBtnClick = function() {
+    alert("add to cart btn clicked")
+    // get the id of clikced item
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+    alert("this is the book-id to be deleted:  "+ idToDelete)
+    // remove from list
+  API.addToCart(idToDelete).then(function() {
+       window.location.href = '/api/books/cart'+idToDelete;
+        //alert(window.location.href)
+
+  });
+
+};
+
+$("#text-info").on("click", ".addToCart", handleCartBtnClick);
 
 <button id = "add-cart"> Add to Cart </button>
 <button> <a href = "/buyer"> Keep Shopping </a></button>

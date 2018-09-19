@@ -53,8 +53,8 @@ body {
     <p> Condition: <input id = "condition-input" class = "input" type = "text" placeholder = "describe condition"> </p>
     <p> Location: <input id = "location-input" class  = "input" type = "text" placeholder = "city"> </p>
 </form>
-
-<button id = "seller-submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Submit </button>
+   
+    <button id = "seller-submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Submit </button>
 
 {{!-- Modal Pop-Up --}}
 
@@ -62,7 +62,7 @@ body {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -77,3 +77,41 @@ body {
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$("#seller-submit").on("click",function(event){
+    event.preventDefault();
+    alert("seller btn clicked");
+// get seller Info from the form and store data to sellers table in the db
+      var sellerInfo = {
+     name: $("#name-input").val().trim(),
+     title:$("#title-input").val().trim(),
+     authors:$("#author-input").val().trim(),
+     price:$("#price-input").val().trim(),
+     condition:$("#condition-input").val().trim(),
+     location:$("#location-input").val().trim()
+  };
+
+      $.post("/api/sellers",sellerInfo, function (data) {
+       // go to /api/sellers to see seller info added   
+       //window.location.href = '/api/sellers';
+       
+    });
+ // show seller name in the modal title;
+ $('#exampleModalLabel').text("Hi "+sellerInfo.name);
+
+ // clear input forms
+ $("#name-input").val("");
+ $("#title-input").val("");
+ $("#author-input").val("");
+ $("#price-input").val("");
+ $("#condition-input").val("");
+ $("#location-input").val("");
+ // clear modal title seller name 
+ $('#exampleModalLabel').val("");
+
+});
+
+</script>
