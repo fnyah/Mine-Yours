@@ -4,7 +4,7 @@
     "password": "root",
     "database": "exampledb",
     "host": "localhost",
-    "dialect": "mysql",
+    "dialect": "sequelize",
     "port": 8889
   },
   "test": {
