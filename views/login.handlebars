@@ -23,22 +23,39 @@ body {
 }
 
 #loginH1 {
-  font-size: 150%;
   margin-top: 50px;
   text-align: center;
 }
 
-a {
+#home {
   float: right;
 }
 
+#login-options {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.login-submit {
+  width: 50%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid;
+}
+
+p {
+  font-size: 150%;
+  color: #222E50
+}
+
+
+
 </style>
 
-<button> <a href = "/seller"> Submit </a> </button>
 
-<a href="/" style="margin-left:33.3%">← Back To Home</a>
+<a href="/" style="margin-left:33.3%" id = "home">← Back To Home</a>
 
-<h1 id="loginH1">{{msg}} Please Log In or Sign up if you haven't registered </h1>
+<p id="loginH1">{{msg}} Step 1: Log In or Sign up if you haven't registered </p>
 
  <div id="master-login-example">
   <div id="login_div" class="main-div">
@@ -56,5 +73,16 @@ a {
     <button onclick="logout()">Logout</button>
   </div>
 </div>
+
+<div id = "login-options">
+<p> Step 2: Please select </p>
+<button id = "buyer-login" class = "login-submit"> <a href = "/seller"> I'm a Seller </a> </button>
+<button id = "seller-login" class = "login-submit"> <a href = "/cart"> I'm a Buyer </a> </button>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
 <script src="/js/login.js"></script>
+
+
+
+
