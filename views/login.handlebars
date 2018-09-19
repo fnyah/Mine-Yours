@@ -1,35 +1,51 @@
-<script>
+<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+<style>
 
 body {
     padding: 50px 100px;
 }
 
-#title {
-    font-family: 'Josefin Sans', sans-serif, Arial;
-    margin-bottom: 50px;
-    font-size: 300%;
+#master-login-example {
+    font-family: 'Kosugi Maru', sans-serif, Arial;
+    font-size: 150%;
     text-align: center;
     background-color: #222E50;
     padding: 15px;
     width: 50vw;
     color: white;
     border-radius: 20px;
+    margin: 0 auto;
 }
 
-</script>
+#login-btn {
+  margin-top: 50px;
+}
+
+#loginH1 {
+  font-size: 150%;
+  margin-top: 50px;
+  text-align: center;
+}
+
+a {
+  float: right;
+}
+
+</style>
 
 <button> <a href = "/seller"> Submit </a> </button>
 
-<h1 id="loginH1">{{msg}} login page </h1>
+<a href="/" style="margin-left:33.3%">← Back To Home</a>
 
- <a href="/" style="margin-left:33.3%">← Back To Home</a>
+<h1 id="loginH1">{{msg}} Please Log In or Sign up if you haven't registered </h1>
 
  <div id="master-login-example">
   <div id="login_div" class="main-div">
-    <h3>User account example Firebase</h3>
+    <h3>User Information </h3>
     <input type="email" placeholder="Email..." id="email_field" />
     <input type="password" placeholder="Password..." id="password_field" />
-    <button onclick="login()" >Login to Account</button>
+    <button id = "login-btn" onclick="login()" >Login to Account</button>
   </div>
   <div id="create_div" class="create-account">
     <button onclick="window.location.href='/register'">Create Account</button>

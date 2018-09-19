@@ -1,43 +1,76 @@
 <link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
-<style>
-/* Applicable to all pages */
+<!-- Materialize: Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+<!-- Materialize: Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
+
+<style>
 body {
     padding: 50px 100px;
 }
 
-#title {
-    font-family: 'Josefin Sans', sans-serif, Arial;
-    margin-bottom: 50px;
-    font-size: 300%;
-    text-align: center;
+.nav-wrapper {
     background-color: #222E50;
-    padding: 15px;
-    width: 50vw;
-    color: white;
-    border-radius: 20px;
+    position: fixed;
+    width: 100%;
+    font-family: 'Kosugi Maru', sans-serif, Arial;
+}
+
+.brand-logo {
+    margin-left: 20px;
 }
 
 #header {
     float: right;
 }
+
+#search-input {
+    width: 80%;
+}
+
+#search {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#search-page {
+    margin-top: 50px;
+}
+
+#keep-shopping a {
+    text-decoration: none;
+    color: white;
+}
+
+#keep-shopping a:hover {
+    color: black;
+}
+
+#text-info {
+    font-family: 'Kosugi Maru', sans-serif, Arial;
+    margin-bottom: 50px;
+}
+
+img {
+    margin-bottom: 20px;
+}
+
 </style>
 
-<div id = "header">
-    {{!-- goes to login.handlebars --}}
-    <a href = "/login"> Sign Up / Log In  </a> | 
-    {{!-- goes to shopping.handlebars --}}
-    <a href = "/cart"> Shopping Cart </a>
-</div>
 
-<h1 id = "title"> The Marketplace </h1>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Mine &amp; Yours</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/login">Sign Up / Log In</a></li>
+        <li><a href="/cart">Shopping Cart</a></li>
+      </ul>
+    </div>
+  </nav>
 
-{{!-- <div id = "search-page"> --}}
-    <!-- will have the displayed textbooks in respect to search input -->
-    <!-- Info included: Image, Title, Author, Price, Condition, City -->
-    
-    {{!-- <img> --}}
+<div id = "search-page">
     <ul id = "text-info" style="list-style:none">
     {{#each books}}
         <li data-id="{{this.id}}" data-title="{{this.title}}" data-price="{{this.price}}">
@@ -46,16 +79,23 @@ body {
             <p> Author: {{this.authors}} </p>
             <p> Price: {{this.price}} </p>
             <p> Condition: {{this.condition}} </p>
-            <button class="btn addToCart"> Add to Cart </button>
         </li>
     {{/each}}
     </ul>
-{{!-- </div> --}}
-{{!-- <button id = "add-cart"> Add to Cart </button> --}}
-<button> <a href = "/buyer"> Keep Shopping </a></button>
+</div>
+
+    <button id = "add-cart" class="btn addToCart"> Add to Cart </button>
+    <button id = "keep-shopping" class = "btn"> <a href = "/buyer"> Keep Shopping </a></button>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+$("#add-cart").on("click", function() {
+// #search-page results will be appended to the cart page #shopping-cart
+   console.log("Working!")
+   var searchPage = $("search-page")
+   $("#shopping-cart").append(searchPage);
+})
+
 //=================
 var API={
     deleteBook: function(id) {
@@ -79,24 +119,12 @@ var API={
 };
 // Remove the books from the db and move list to cart table
 var handleCartBtnClick = function() {
-        event.preventDefault();
-    alert("add to cart btn clicked");
-    var idToMoveToCart = $(this).parent().attr("data-id");
-    var titleToMoveToCart = $(this).parent().attr("data-title");
-    var priceToMoveToCart = $(this).parent().attr("data-price");
-
-        alert(priceToMoveToCart)
-
-    // get the id of clikced item and remove from search list
-    var tempObj={
-        title:titleToMoveToCart,
-        price:priceToMoveToCart
-    }
-
-//console.log(tempObj);
-
- //alert(tempObj.title);
-    //alert("this is the book to move to cart:  "+idToMoveToCart)
+    alert("add to cart btn clicked")
+    // get the id of clicked item
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+    alert("this is the book-id to be deleted:  "+ idToDelete)
     // remove from list
        var currentURL = window.location.origin;
 
@@ -113,9 +141,6 @@ var handleCartBtnClick = function() {
   
 
 };
-
-
-$("#text-info").on("click",".addToCart",handleCartBtnClick);
 
 
 </script>

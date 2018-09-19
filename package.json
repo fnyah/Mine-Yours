@@ -4,7 +4,6 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
     "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
@@ -16,11 +15,12 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "jquery": "^3.3.1",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^1.5.3",
     "path": "^0.12.7",
     "sequelize": "^4.38.0"
   },
-   "engines": {
+  "engines": {
     "node": "8.11.1"
   },
   "devDependencies": {
