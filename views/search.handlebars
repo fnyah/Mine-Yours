@@ -71,10 +71,6 @@ img {
   </nav>
 
 <div id = "search-page">
-    <!-- will have the displayed textbooks in respect to search input -->
-    <!-- Info included: Image, Title, Author, Price, Condition, City -->
-    
-    {{!-- <img> --}}
     <ul id = "text-info" style="list-style:none">
     {{#each books}}
         <li data-id="{{this.id}}">
@@ -86,12 +82,20 @@ img {
         </li>
     {{/each}}
     </ul>
-            <button id = "add-cart" class="btn addToCart"> Add to Cart </button>
-            <button id = "keep-shopping" class = "btn"> <a href = "/buyer"> Keep Shopping </a></button>
-{{!-- </div> --}}
+</div>
+
+    <button id = "add-cart" class="btn addToCart"> Add to Cart </button>
+    <button id = "keep-shopping" class = "btn"> <a href = "/buyer"> Keep Shopping </a></button>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+$("#add-cart").on("click", function() {
+// #search-page results will be appended to the cart page #shopping-cart
+   console.log("Working!")
+   var searchPage = $("search-page")
+   $("#shopping-cart").append(searchPage);
+})
+
 //=================
 var API={
     deleteBook: function(id) {
@@ -133,3 +137,5 @@ var handleCartBtnClick = function() {
 };
 
 $("#text-info").on("click", ".addToCart", handleCartBtnClick);
+
+</script>
