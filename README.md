@@ -1,5 +1,4 @@
-# GroupProject2
-work in progress...
+# Mine & Yours
 
 ## Description
 NameofApp is a centralized platform for students get to buy and sell their textbooks at a reasonable price. 
@@ -11,7 +10,7 @@ NameofApp is a centralized platform for students get to buy and sell their textb
 ### Benefits
 * Convenience -  
 * Better Prices - 
-* Healthy Competition - 
+* Validation - 
 
 ## Deployment
 ``` Front End: HTML, CSS, Bootstrap, JavaScript, jQuery
@@ -30,9 +29,9 @@ npm Packages Installed: fs (file system), path, sequelize
 ## Authors
 Everyone is a contributor for different aspects of the application but these are the initial assignment of responsibilities
 * Zachary Bennett : API / Authentication 
-* Bethlehem Gmariam : Routing / Database
-* Chriscelle Dela Cruz : Front End / UI / Handlebars / Database
-* Abbas : Database
+* Bethlehem Gmariam : Routing 
+* Chriscelle Dela Cruz : Front End / UI / Handlebars
+* Abbas Moiz : Sequelize
 
 ## License
 MIT
