@@ -9,7 +9,7 @@ var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize("exampledb", "localhost", "root");
 } else {
   var sequelize = new Sequelize(
     config.database,
