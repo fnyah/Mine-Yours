@@ -26,7 +26,7 @@ app.get("/buyer/:title", function(req, res) {
 
 // to display query result
 app.get("/cart", function(req,res){
-  res.render("cart",{msg:"Welcome to shopping cart"})
+  res.render("cart",{msg:"Welcome to the shopping cart"})
 });
 
 // show all available books
